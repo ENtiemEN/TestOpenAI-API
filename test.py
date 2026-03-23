@@ -52,3 +52,8 @@ response = client.responses.create(
 resultado = json.loads(response.output_text)
 print("\n--- Respuesta del modelo ---")
 print(json.dumps(resultado, indent=2, ensure_ascii=False))
+
+# Limpieza: eliminar el vector store y el archivo para evitar costos de almacenamiento.
+client.vector_stores.delete(vector_store.id)
+client.files.delete(file.id)
+print("\nRecursos eliminados correctamente.")
